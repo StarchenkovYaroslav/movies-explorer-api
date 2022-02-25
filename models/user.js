@@ -6,22 +6,22 @@ const UnauthorizedError = require('../utils/errors/unauthorized-error');
 
 const userSchema = new mongoose.Schema({
   email: {
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      validate: {
-        validator(email) {
-          return validator.isEmail(email);
-        },
-        message: 'некорректный email',
+    type: String,
+    required: true,
+    unique: true,
+    validate: {
+      validator(email) {
+        return validator.isEmail(email);
       },
+      message: 'некорректный email',
     },
   },
   password: {
     type: String,
     required: true,
     select: false,
+    minlength: 2,
+    maxlength: 30,
   },
   name: {
     type: String,
