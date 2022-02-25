@@ -9,6 +9,7 @@ const { errors } = require('celebrate');
 const cors = require('cors');
 
 const errorHandler = require('./utils/middlewares/handlers/error-handler');
+const { errorLogger, requestLogger } = require('./utils/middlewares/logger');
 
 const routs = require('./routes');
 
@@ -26,9 +27,11 @@ app.use(cors(corsConfig));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(requestLogger);
 
 app.use(routs);
 
+app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
