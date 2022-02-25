@@ -6,15 +6,14 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-const cors = require('cors');
 
 const errorHandler = require('./utils/middlewares/handlers/error-handler');
+const corsHandler = require('./utils/middlewares/handlers/cors-handler');
 const { errorLogger, requestLogger } = require('./utils/middlewares/logger');
 
 const routs = require('./routes');
 
 const { PORT, DB_ADDRESS } = require('./utils/configs/app-config');
-const corsConfig = require('./utils/configs/cors-config');
 
 const app = express();
 
@@ -22,7 +21,7 @@ mongoose.connect(DB_ADDRESS, {
   useNewUrlParser: true,
 });
 
-app.use(cors(corsConfig));
+app.use(corsHandler);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
