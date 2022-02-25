@@ -6,7 +6,9 @@ const moviesRouter = require('./movies');
 
 const authProtector = require('../utils/middlewares/authProtector');
 
-const { logOut } = require('../controllers/authorization');
+const { signOut, checkAuth } = require('../controllers/authorization');
+
+commonRouter.get('/checkAuth', checkAuth);
 
 commonRouter.use('/', authRouter);
 
@@ -15,6 +17,6 @@ commonRouter.use(authProtector);
 commonRouter.use('/users', usersRouter);
 commonRouter.use('/movies', moviesRouter);
 
-commonRouter.get('/logout', logOut);
+commonRouter.get('/logout', signOut);
 
 module.exports = commonRouter;

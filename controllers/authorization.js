@@ -70,3 +70,22 @@ module.exports.signOut = (req, res) => {
     })
     .send({ message: 'осуществлен выход из системы' });
 };
+
+module.exports.checkAuth = (req, res) => {
+  const { token } = req.cookies;
+
+  let isValid = false;
+
+  if (!token) {
+    res.send({ isValid });
+    return;
+  }
+
+  try {
+    jwt.verify(token, JWT_SECRET);
+    isValid = true;
+    res.send({ isValid });
+  } catch (err) {
+    res.send({ isValid });
+  }
+};
