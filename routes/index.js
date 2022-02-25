@@ -18,7 +18,7 @@ commonRouter.use(authProtector);
 commonRouter.use('/users', usersRouter);
 commonRouter.use('/movies', moviesRouter);
 
-commonRouter.get('/logout', signOut);
+commonRouter.get('/sign-out', signOut);
 
 commonRouter.use(pageNotFoundHandler);
 
