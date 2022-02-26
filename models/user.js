@@ -29,17 +29,19 @@ const userSchema = new mongoose.Schema({
   },
 }, { versionKey: false });
 
-userSchema.statics.findUserByCredentials = (email, password) => this.findOne({ email })
-  .select('+password')
-  .orFail(new UnauthorizedError('пользователь с таким email не найден'))
-  .then((user) => bcrypt.compare(password, user.password)
-    .then((isPasswordMatched) => {
-      if (!isPasswordMatched) {
-        return Promise.reject(new UnauthorizedError('неверный пароль'));
-      }
+function findUserByCredentials(email, password) {
+  return this.findOne({ email })
+    .select('+password')
+    .orFail(new UnauthorizedError('пользователь с таким email не найден'))
+    .then((user) => bcrypt.compare(password, user.password)
+      .then((isPasswordMatched) => {
+        if (!isPasswordMatched) {
+          return Promise.reject(new UnauthorizedError('неверный пароль'));
+        }
 
-      return user;
-    }));
+        return user;
+      }));
+}
 
 userSchema.set('toJSON', {
   transform(doc, ret) {
@@ -48,5 +50,7 @@ userSchema.set('toJSON', {
     return result;
   },
 });
+
+userSchema.statics.findUserByCredentials = findUserByCredentials;
 
 module.exports = mongoose.model('user', userSchema);
