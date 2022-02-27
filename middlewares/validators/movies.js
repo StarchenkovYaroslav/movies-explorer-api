@@ -1,6 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 
-const { urlValidator } = require('../../custom-validators');
+const { urlValidator } = require('../../utils/custom-validators');
 
 module.exports.createMovieValidator = celebrate({
   body: Joi.object().keys({

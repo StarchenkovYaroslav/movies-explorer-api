@@ -4,8 +4,8 @@ const authRouter = require('./authorization');
 const usersRouter = require('./users');
 const moviesRouter = require('./movies');
 
-const authProtector = require('../utils/middlewares/authProtector');
-const pageNotFoundHandler = require('../utils/middlewares/handlers/page-not-found-handler');
+const authProtector = require('../middlewares/authProtector');
+const pageNotFoundHandler = require('../middlewares/handlers/page-not-found-handler');
 
 const { signOut, checkAuth } = require('../controllers/authorization');
 

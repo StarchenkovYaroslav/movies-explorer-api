@@ -7,9 +7,9 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 
-const errorHandler = require('./utils/middlewares/handlers/error-handler');
-const corsHandler = require('./utils/middlewares/handlers/cors-handler');
-const { errorLogger, requestLogger } = require('./utils/middlewares/logger');
+const errorHandler = require('./middlewares/handlers/error-handler');
+const corsHandler = require('./middlewares/handlers/cors-handler');
+const { errorLogger, requestLogger } = require('./middlewares/logger');
 
 const routs = require('./routes');
 
