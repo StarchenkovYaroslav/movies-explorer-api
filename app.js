@@ -13,7 +13,7 @@ const { errorLogger, requestLogger } = require('./utils/middlewares/logger');
 
 const routs = require('./routes');
 
-const { PORT, DB_ADDRESS } = require('./utils/configs/app-config');
+const { PORT, DB_ADDRESS } = require('./config');
 
 const app = express();
 

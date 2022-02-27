@@ -5,7 +5,7 @@ const User = require('../models/user');
 
 const { CREATED_STATUS, OK_STATUS } = require('../utils/constants');
 
-const { JWT_SECRET } = require('../utils/configs/app-config');
+const { JWT_SECRET } = require('../config');
 
 const BadRequestError = require('../utils/errors/bad-request-error');
 const DuplicateError = require('../utils/errors/duplicate-error');
