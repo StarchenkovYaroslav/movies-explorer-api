@@ -22,7 +22,7 @@ module.exports.createMovie = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
-        next(new BadRequestError(err.message));
+        next(new BadRequestError('переданы некорректные данные'));
         return;
       }
 

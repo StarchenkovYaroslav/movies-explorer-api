@@ -25,12 +25,12 @@ module.exports.editCurrentUser = (req, res, next) => {
     })
     .catch((err) => {
       if (err.code === 11000) {
-        next(new DuplicateError(err.message));
+        next(new DuplicateError('пользователь с таким email уже существует'));
         return;
       }
 
       if (err.name === 'ValidationError' || err.name === 'CastError') {
-        next(new BadRequestError(err.message));
+        next(new BadRequestError('переданы некорректные данные'));
         return;
       }
 
