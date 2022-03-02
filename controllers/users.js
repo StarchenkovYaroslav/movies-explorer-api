@@ -16,7 +16,7 @@ module.exports.getCurrentUser = (req, res, next) => {
 };
 
 module.exports.editCurrentUser = (req, res, next) => {
-  User.findByIdAndUpdate(req.user._id, ...req.body, {
+  User.findByIdAndUpdate(req.user._id, req.body, {
     new: true,
   })
     .orFail(new NotFoundError('пользователь не найден'))
