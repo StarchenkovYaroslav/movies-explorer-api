@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const { CREATED_STATUS, OK_STATUS } = require('../utils/constants');
+const { CREATED_STATUS } = require('../utils/constants');
 
 const { JWT_SECRET } = require('../config');
 
@@ -54,7 +54,6 @@ module.exports.signIn = (req, res, next) => {
           sameSite: 'none',
           secure: true,
         })
-        .status(OK_STATUS)
         .send({ message: 'вход выполнен' });
     })
     .catch(next);

@@ -1,5 +1,3 @@
-module.exports.OK_STATUS = 200;
-
 module.exports.CREATED_STATUS = 201;
 
 module.exports.BAD_REQUEST_STATUS = 400;

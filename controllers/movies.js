@@ -4,12 +4,10 @@ const BadRequestError = require('../utils/errors/bad-request-error');
 const NotFoundError = require('../utils/errors/not-found-error');
 const ForbiddenError = require('../utils/errors/forbidden-error');
 
-const { OK_STATUS } = require('../utils/constants');
-
 module.exports.getAllMovies = (req, res, next) => {
   Movie.find({})
     .then((movies) => {
-      res.status(OK_STATUS).send(movies);
+      res.send(movies);
     })
     .catch(next);
 };
@@ -17,7 +15,7 @@ module.exports.getAllMovies = (req, res, next) => {
 module.exports.createMovie = (req, res, next) => {
   Movie.create({ ...req.body, owner: req.user._id })
     .then((movie) => {
-      res.status(OK_STATUS).send(movie);
+      res.send(movie);
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
@@ -40,7 +38,7 @@ module.exports.deleteMovie = (req, res, next) => {
       return movie.remove();
     })
     .then(() => {
-      res.status(OK_STATUS).send({ message: 'фильм успешно удален' });
+      res.send({ message: 'фильм успешно удален' });
     })
     .catch(next);
 };
