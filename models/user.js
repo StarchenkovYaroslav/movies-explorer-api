@@ -32,11 +32,11 @@ const userSchema = new mongoose.Schema({
 function findUserByCredentials(email, password) {
   return this.findOne({ email })
     .select('+password')
-    .orFail(new UnauthorizedError('пользователь с таким email не найден'))
+    .orFail(new UnauthorizedError('неверная почта или пароль'))
     .then((user) => bcrypt.compare(password, user.password)
       .then((isPasswordMatched) => {
         if (!isPasswordMatched) {
-          return Promise.reject(new UnauthorizedError('неверный пароль'));
+          return Promise.reject(new UnauthorizedError('неверная почта или пароль'));
         }
 
         return user;
