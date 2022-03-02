@@ -8,7 +8,6 @@ const { OK_STATUS } = require('../utils/constants');
 
 module.exports.getAllMovies = (req, res, next) => {
   Movie.find({})
-    .populate(['owner'])
     .then((movies) => {
       res.status(OK_STATUS).send(movies);
     })
