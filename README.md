@@ -1,1 +1,9 @@
-Домен ip: https://api.moviesexplorer.nomoredomains.work
+# Movies explorer (backend)
+
+## Описание проекта
+
+Сайт с возможностью авторизации, поиска\фильтрации\добавления в избранное\удаления из избранного фильмов. Учебный проект.
+
+## Ссылка на сайт
+
+https://moviesexplorer.nomoredomains.work
