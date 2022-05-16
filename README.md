@@ -7,3 +7,7 @@
 ## Ссылка на сайт
 
 https://moviesexplorer.nomoredomains.work
+
+## Статус проекта
+
+Завершен
